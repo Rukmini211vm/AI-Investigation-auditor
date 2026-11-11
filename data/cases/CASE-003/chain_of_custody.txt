@@ -1,0 +1,9 @@
+CHAIN OF CUSTODY REGISTER FOR CASE-003
+
+EVIDENCE ID: E-301
+COLLECTED BY: Inspector Venkatesh at 20:00
+SEALED TIME: 20:20
+TRANSFERRED TO: Forensic Science Laboratory (FSL) Ballistics at 21:30
+STORED AT: FSL Vault Room 3
+STATUS: Transferred Under Seal
+

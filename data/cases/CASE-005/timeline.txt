@@ -1,0 +1,5 @@
+TIMELINE REGISTER FOR CASE-005
+
+[17:25 on 2024-10-01] EVT-501 (CCTV-501): Child observed on mall camera.
+[17:30 on 2024-10-01] EVT-502 (FIR-2024-9540): FIR incident timestamp inside North Gate Mall.
+[17:30 on 2024-10-01] EVT-503 (WS-502): Witness claims seeing abduction 22km away at Bypass Toll.

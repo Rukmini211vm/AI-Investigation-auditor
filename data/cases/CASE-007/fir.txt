@@ -1,0 +1,14 @@
+CASE ID: CASE-007
+TITLE: Electronics Superstore Commercial Burglary
+CRIME TYPE: Theft
+INCIDENT DATE: 2024-07-09
+INCIDENT TIME: 03:15
+LOCATION: MegaTech Electronics, Commercial Boulevard
+VICTIM: MegaTech Retail Corp
+SUSPECTS: Two individuals in dark overalls
+FIR NUMBER: FIR-2024-4421
+POLICE STATION: City South PS
+SECTIONS: Section 380, 457 IPC / Section 305, 331 BNS
+
+DETAILS:
+Glass panel shutter shattered and high-value mobile stock stolen between 03:00 and 03:30 hrs.

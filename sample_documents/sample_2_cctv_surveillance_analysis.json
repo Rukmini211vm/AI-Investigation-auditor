@@ -1,0 +1,55 @@
+{
+  "report_metadata": {
+    "report_id": "CCTV-ANALYSIS-2024-089A",
+    "issuing_authority": "Traffic Command & Surveillance Control Center",
+    "analysis_date": "2024-10-14",
+    "investigator_in_charge": "Inspector Anand Rao",
+    "reference_fir": "FIR-CASE-001"
+  },
+  "vehicle_of_interest": {
+    "registration_number": "KA-03-HA-9821",
+    "make_model": "Dark Navy Sedan (Honda City)",
+    "notable_features": "Dent on rear left fender, tinted side windows"
+  },
+  "surveillance_detections": [
+    {
+      "cctv_id": "CCTV-EXT-001",
+      "camera_name": "MG Road North Junction PTZ-4",
+      "timestamp": "20:55",
+      "date": "2024-10-12",
+      "speed_kmh": 48,
+      "direction": "South to North towards Sector 4",
+      "observation": "Vehicle KA-03-HA-9821 spotted crossing intersection 10 minutes prior to reported incident time.",
+      "visual_clarity": "High Definition (1080p)"
+    },
+    {
+      "cctv_id": "CCTV-EXT-002",
+      "camera_name": "Industrial Area Gate 3 ANPR",
+      "timestamp": "21:18",
+      "date": "2024-10-12",
+      "speed_kmh": 65,
+      "direction": "Exiting Industrial Area towards Highway Bypass",
+      "observation": "Vehicle captured accelerating away from vicinity of crime scene. Front passenger side empty; single driver observed.",
+      "visual_clarity": "ANPR Infrared Flash Capture"
+    },
+    {
+      "cctv_id": "CCTV-EXT-003",
+      "camera_name": "Outer Ring Toll Gate Lane 2",
+      "timestamp": "21:42",
+      "date": "2024-10-12",
+      "speed_kmh": 15,
+      "direction": "Outbound Toll Exit",
+      "observation": "FASTag automated deduction logged for tag ID NETC-9912041. Driver face matches Suspect photo profile. Contradicts claimed alibi.",
+      "visual_clarity": "Color Toll Booth Stills"
+    }
+  ],
+  "associated_evidence": {
+    "evidence_id": "E-009",
+    "type": "CCTV DVR Backup Hard Drive",
+    "recovery_location": "Traffic Command Center Server Room Rack 4",
+    "recovery_date": "2024-10-13",
+    "recovery_time": "11:20",
+    "officer": "SI V. Murthy",
+    "description": "Sealed 2TB Western Digital hard drive containing uncompressed footage from cameras CCTV-EXT-001 through CCTV-EXT-003."
+  }
+}

@@ -1,0 +1,14 @@
+CASE ID: CASE-002
+TITLE: Riverside Estate Robbery & Homicide
+CRIME TYPE: Murder
+INCIDENT DATE: 2024-11-04
+INCIDENT TIME: 22:30
+LOCATION: Farmhouse 12, Riverside Estate, Badarpur Border
+VICTIM: Sanjay Mehta (Age 52, Industrialist)
+SUSPECTS: Anil Thakur (Former Driver)
+FIR NUMBER: FIR-2024-9102
+POLICE STATION: Badarpur Police Station
+SECTIONS: Section 302, 397 IPC / Section 103, 311 BNS
+
+DETAILS:
+Two armed individuals forced entry into master bedroom, demanded safe combinations, and struck victim before fleeing through rear boundary wall.

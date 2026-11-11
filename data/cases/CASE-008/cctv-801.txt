@@ -1,0 +1,7 @@
+CCTV ID: CCTV-801
+CAMERA: Alleyway Security Camera
+TIMESTAMP: 01:12
+DATE: 2024-11-20
+
+FOOTAGE DESCRIPTION:
+Footage shows confrontation between two males in alleyway.

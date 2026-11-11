@@ -1,0 +1,8 @@
+EVIDENCE ID: E-102
+TYPE: Latent Fingerprints
+RECOVERY LOCATION: Bedroom Window Frame
+RECOVERY TIME: 00:15
+OFFICER: Mobile Forensic Unit Tech
+
+DESCRIPTION:
+Lifted ridge patterns from bedroom window latch.

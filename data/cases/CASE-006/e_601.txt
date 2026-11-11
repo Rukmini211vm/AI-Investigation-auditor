@@ -1,0 +1,8 @@
+EVIDENCE ID: E-601
+TYPE: Digital Server Logs
+RECOVERY LOCATION: Server Room Rack 4
+RECOVERY TIME: 14:00
+OFFICER: Cyber Inspector S. Murthy
+
+DESCRIPTION:
+Apache and gateway access logs exported as tarball.

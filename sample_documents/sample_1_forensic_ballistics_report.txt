@@ -1,0 +1,43 @@
+STATE FORENSIC SCIENCE LABORATORY (SFSL)
+BALLISTICS & FIREARMS EXAMINATION REPORT
+================================================================================
+Report No      : SFSL/BLS/2024/0981
+Date of Report : 2024-10-15
+Case Reference : CRIME NO. 142/2024
+Police Station : Central Precinct
+Submitting Off : SI V. Murthy
+Suspect Ref    : S-001 (Arjun Verma)
+
+EXHIBITS RECEIVED FOR SCIENTIFIC EXAMINATION:
+--------------------------------------------------------------------------------
+Exhibit E-001  : One (1) fired 9mm brass cartridge casing recovered from crime scene.
+Exhibit E-003  : One (1) 9mm country-made semi-automatic pistol seized from Suspect S-001.
+Exhibit E-004  : Three (3) live 9mm rounds found in the magazine.
+
+LABORATORY FINDINGS & MICROSCOPIC COMPARISON:
+--------------------------------------------------------------------------------
+1. Caliber Verification:
+   Exhibit E-001 casing is confirmed 9x19mm Parabellum, headstamp 'KF-2022'.
+
+2. Firing Pin Impression:
+   The firing pin impression on Exhibit E-001 was subjected to comparison microscopy 
+   against test-fired casings from seized pistol Exhibit E-003. Distinctive circular 
+   striations and eccentric hemispherical indentations matched at 32x magnification.
+
+3. Chamber & Breechface Marks:
+   Parallel breechface shear marks on E-001 exhibit identical signature marks 
+   consistent with the breech block of Exhibit E-003.
+
+4. Chain of Custody & Preservation:
+   Exhibits were received sealed with lac seal bearing impression 'INSP-POLICE-04'.
+   Seals were intact upon receipt on 2024-10-13 at 14:30 hrs.
+   After examination, exhibits were resealed under SFSL Seal #8491.
+
+EXPERT OPINION:
+--------------------------------------------------------------------------------
+The fired cartridge casing marked Exhibit E-001 was conclusively discharged from the 
+firearm marked Exhibit E-003 to the exclusion of all other weapons tested.
+
+Examining Ballistics Expert:
+Dr. K. N. Swamy, Senior Scientific Officer (Ballistics)
+State Forensic Science Laboratory

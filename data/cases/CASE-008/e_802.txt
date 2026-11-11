@@ -1,0 +1,8 @@
+EVIDENCE ID: E-802
+TYPE: Blunt Iron Rod
+RECOVERY LOCATION: Municipal Dumpster, Block M
+RECOVERY TIME: 08:30
+OFFICER: SI Naveen
+
+DESCRIPTION:
+Rusted iron pipe (2.5 feet) recovered from municipal garbage bin 400 meters away.

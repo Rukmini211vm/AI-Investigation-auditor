@@ -1,0 +1,14 @@
+CASE ID: CASE-006
+TITLE: Corporate Treasury Cyber Fraud & Wire Transfer
+CRIME TYPE: Cybercrime
+INCIDENT DATE: 2024-11-15
+INCIDENT TIME: 11:45
+LOCATION: Nexus Financial Towers, Financial District
+VICTIM: Apex Global Logistics Pvt Ltd
+SUSPECTS: Internal system administrator / spoofed credentials
+FIR NUMBER: FIR-2024-11029
+POLICE STATION: State Cyber Crime Police Station
+SECTIONS: Section 420, 468 IPC / Section 66C, 66D IT Act
+
+DETAILS:
+At 11:45 hrs, fraudulent wire instruction executed. As confirmed by Internal IT Security Auditor Mr. Raghav Kulkarni in initial briefing, the server token was hijacked.

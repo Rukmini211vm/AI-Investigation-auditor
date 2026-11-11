@@ -1,0 +1,8 @@
+EVIDENCE ID: E-301
+TYPE: Ballistic Cartridge
+RECOVERY LOCATION: Office Chamber Floor, Godown 7
+RECOVERY TIME: 20:00
+OFFICER: Inspector Venkatesh
+
+DESCRIPTION:
+Two spent 7.65mm brass cartridge cases recovered from office floor.

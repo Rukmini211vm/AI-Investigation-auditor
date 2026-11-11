@@ -1,0 +1,8 @@
+EVIDENCE ID: E-901
+TYPE: Digital Audio File
+RECOVERY LOCATION: Director Smart Phone Recording
+RECOVERY TIME: 16:45
+OFFICER: Inspector V. Bhatia
+
+DESCRIPTION:
+Call audio recording (MP3 format) on secure USB drive.

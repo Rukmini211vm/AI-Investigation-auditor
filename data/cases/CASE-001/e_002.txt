@@ -1,0 +1,8 @@
+EVIDENCE ID: E-002
+TYPE: Digital Storage
+RECOVERY LOCATION: Building Security Room
+RECOVERY TIME: 23:00
+OFFICER: Cyber Cell SI Verma
+
+DESCRIPTION:
+Hikvision NVR Hard Drive (2TB) containing CCTV streams CAM-01 to CAM-08.

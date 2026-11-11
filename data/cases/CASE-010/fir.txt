@@ -1,0 +1,14 @@
+CASE ID: CASE-010
+TITLE: Commercial Bank Vault Heist
+CRIME TYPE: Theft
+INCIDENT DATE: 2024-06-14
+INCIDENT TIME: 02:15
+LOCATION: National Cooperative Bank, Cantonment Branch
+VICTIM: National Cooperative Bank
+SUSPECTS: Professional safe-cracking gang
+FIR NUMBER: FIR-2024-3891
+POLICE STATION: Cantonment Police Station
+SECTIONS: Section 457, 380 IPC / Section 331, 305 BNS
+
+DETAILS:
+Locker room breached via subterranean tunnel from adjoining stormwater drain. Total 32 safety lockers opened.

@@ -1,0 +1,8 @@
+EVIDENCE ID: E-701
+TYPE: Physical Tool
+RECOVERY LOCATION: Front Shutter Threshold
+RECOVERY TIME: 06:30
+OFFICER: ASI K. Swamy
+
+DESCRIPTION:
+Broken bolt cutter left beside display pedestal.

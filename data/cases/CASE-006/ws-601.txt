@@ -1,0 +1,8 @@
+WITNESS ID: WS-601
+NAME: Pooja Hegde (Accounts Manager)
+STATEMENT DATE: 2024-11-16
+CLAIMED TIME: 11:50
+LOCATION: Accounts Hall
+
+STATEMENT:
+Received confirmation SMS for outbound transfer that was never authorized by CFO.

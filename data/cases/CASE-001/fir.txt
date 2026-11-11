@@ -1,0 +1,14 @@
+CASE ID: CASE-001
+TITLE: Homicide Investigation at Metro Heights Apartment
+CRIME TYPE: Murder
+INCIDENT DATE: 2024-10-12
+INCIDENT TIME: 21:00
+LOCATION: Flat 402, Metro Heights Apartment, Sector 14
+VICTIM: Arun Kumar (Age 38, Architect)
+SUSPECTS: Vikram Rao (Former Business Associate), Ramesh Verma (Building Caretaker)
+FIR NUMBER: FIR-2024-8841
+POLICE STATION: Central District Police Station
+SECTIONS: Section 302 IPC / Section 103 BNS
+
+DETAILS:
+Incident occurred around 21:00 hrs on 12-Oct-2024. Victim suffered fatal stab injury. Neighbor raised distress call. Security logs and area surveillance impounded.

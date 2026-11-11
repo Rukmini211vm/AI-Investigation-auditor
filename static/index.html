@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Investigation Auditor — Second-Level Audit for Investigation Records</title>
+  <!-- Executive Typography: Plus Jakarta Sans, Cinzel (Judicial), JetBrains Mono (Forensic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2.6.0">
+</head>
+<body>
+
+  <!-- ================= APP LAYOUT: LEFT SIDEBAR + MAIN CONTENT ================= -->
+  <div class="app-layout">
+
+    <!-- ================= LEFT SIDEBAR (VERTICAL NAVIGATION BLOCK) ================= -->
+    <aside class="app-sidebar" id="appSidebar">
+      <!-- Sidebar Brand Header -->
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-icon">
+            <span>⚖️</span>
+          </div>
+          <div>
+            <div class="brand-title">AI INVESTIGATION AUDITOR</div>
+            <div class="brand-subtitle">CRIMINAL AUDIT LAYER</div>
+          </div>
+        </div>
+
+        <div class="sidebar-meta-strip">
+          <span class="badge-status-telemetry"><span class="pulse-indicator"></span> AUDIT SYSTEM ONLINE</span>
+        </div>
+
+        <div class="sidebar-current-case-box">
+          <div class="sidebar-box-label">ACTIVE INVESTIGATION DOSSIER:</div>
+          <div class="badge-current-dossier" id="currentCaseBadge">DOSSIER: CASE-001 (Murder)</div>
+        </div>
+      </div>
+
+      <!-- Left Navigation Menu Block -->
+      <nav class="sidebar-nav app-nav">
+        <div class="sidebar-section-title">AUDIT WORKSPACE</div>
+        <div class="nav-tab active" data-tab="overview">
+          <span class="tab-icon">🏛️</span>
+          <span class="tab-label">Overview & Scenarios</span>
+        </div>
+        <div class="nav-tab" data-tab="cases">
+          <span class="tab-icon">🗂️</span>
+          <span class="tab-label">Case Vault Registry</span>
+        </div>
+        <div class="nav-tab" data-tab="workspace">
+          <span class="tab-icon">⚖️</span>
+          <span class="tab-label">Case Workspace & Records</span>
+        </div>
+        <div class="nav-tab" data-tab="audit">
+          <span class="tab-icon">🚩</span>
+          <span class="tab-label">Forensic Audit Findings</span>
+          <span class="tab-badge" id="flagsCountBadge">0</span>
+        </div>
+        <div class="nav-tab" data-tab="timeline">
+          <span class="tab-icon">⏱️</span>
+          <span class="tab-label">Chronology & Conflicts</span>
+        </div>
+        <div class="nav-tab" data-tab="graph">
+          <span class="tab-icon">🕸️</span>
+          <span class="tab-label">Evidence Matrix Graph</span>
+        </div>
+        <div class="nav-tab" data-tab="report">
+          <span class="tab-icon">📄</span>
+          <span class="tab-label">Formal Court Report</span>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer Tools -->
+      <div class="sidebar-footer">
+        <div class="sidebar-quick-actions">
+          <button type="button" class="btn btn-secondary btn-sm sidebar-action-btn" onclick="openFirForCase(AppState.currentCaseId || 'CASE-001')">
+            <span>📑</span> Official FIR (Form II)
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm sidebar-action-btn" onclick="openCurrentCaseCctv()">
+            <span>📹</span> CCTV Surveillance Center
+          </button>
+        </div>
+
+        <div class="sidebar-lang-container">
+          <label for="langSelect" class="sidebar-lang-label">Language:</label>
+          <select id="langSelect" class="lang-select">
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <div class="sidebar-statutory-note">
+          <span>AI Audit Layer v2.4</span>
+          <span class="sidebar-dot"></span>
+          <span>Sec 154 / 173 BNSS</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN CONTENT WRAPPER ================= -->
+    <div class="app-main-wrapper">
+
+      <!-- Executive Top Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="topbar-crumb-box">
+            <span class="topbar-crumb-root">AI AUDITOR</span>
+            <span class="topbar-crumb-sep">/</span>
+            <span class="topbar-crumb-active" id="topbarDossierLabel">CASE-001 (Rajesh Malhotra Homicide)</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="openCurrentCaseCctv()" style="display: flex; align-items: center; gap: 6px;">
+            <span>📹</span> Surveillance Center
+          </button>
+          <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn" title="Toggle Theme (Cyber-Forensic Dark / Executive Light)">
+            <span id="themeToggleIcon">🌙</span> <span id="themeToggleText">Dark</span>
+          </button>
+          <div class="topbar-tag-pill">
+            <span class="stat-dot"></span>
+            <span>STANDALONE AUDIT LAYER</span>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" onclick="document.getElementById('runAuditBtn')?.click()" style="display: flex; align-items: center; gap: 6px;">
+            <span>⚡</span> RUN SECOND-LEVEL AUDIT
+          </button>
+        </div>
+      </header>
+
+      <!-- Toast Notification Bar -->
+      <div id="toastBar" style="display: none; position: fixed; top: 75px; right: 28px; padding: 12px 20px; border-radius: 8px; color: #fff; font-weight: 600; font-size: 13px; z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.15);"></div>
+
+      <!-- Main Container -->
+      <main class="app-container">
+
+    <!-- ================= TAB 1: OVERVIEW & DEMO ACCESS ================= -->
+    <div id="tab-overview" class="tab-content active">
+      
+      <div class="notice-box">
+        <div>ℹ️</div>
+        <div>
+          <strong>AI INVESTIGATION AUDITOR (ACADEMIC / HACKATHON PROTOTYPE)</strong><br>
+          This application functions as a dedicated <strong>second-level investigation audit layer</strong>.
+          It cross-references FIRs, witness testimonies, CCTV surveillance logs, evidence registries, timelines, and custody transfers to identify potential contradictions, timeline gaps, and missing document linkages.
+          <strong>Strict Ethical Invariant:</strong> The system NEVER determines guilt or innocence and never accuses individuals. All findings are presented neutrally for authorized human investigator review.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🚀 Fast Demo Cases Access (Preloaded Scenarios)</div>
+            <div class="card-subtitle">Click any synthetic case scenario to immediately load and audit records:</div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px;">
+          
+          <!-- Scenario 1 -->
+          <div class="card" style="margin-bottom: 0; background: linear-gradient(180deg, #131c31 0%, #0c1220 100%); border: 1px solid rgba(244, 63, 94, 0.35); border-top: 3px solid var(--accent-rose); border-radius: 12px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 800; color: #fda4af; letter-spacing: 0.8px;">DOSSIER SCENARIO 01</span>
+              <span class="flag-badge badge-crit">TIMELINE CONFLICT</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px;">CASE-001 (Homicide Investigation)</div>
+            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px; min-height: 54px;">
+              <strong>Forensic Condition:</strong> Witness Neha Sharma claims suspect departure at 21:10 hrs, while Stairwell CCTV (CAM-04) logs exit at 20:40 hrs (30-min discrepancy).
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" onclick="openFirForCase('CASE-001')" style="flex: 1; font-size: 11px;">📑 Official FIR</button>
+              <button class="btn btn-primary btn-sm" onclick="selectCase('CASE-001')" style="flex: 2; font-size: 12px;">⚡ Audit Dossier &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Scenario 2 -->
+          <div class="card" style="margin-bottom: 0; background: linear-gradient(180deg, #131c31 0%, #0c1220 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-top: 3px solid var(--accent-amber); border-radius: 12px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 800; color: #fde68a; letter-spacing: 0.8px;">DOSSIER SCENARIO 02</span>
+              <span class="flag-badge badge-warn">MISSING PROPERTY</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px;">CASE-002 (Murder / Robbery)</div>
+            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px; min-height: 54px;">
+              <strong>Forensic Condition:</strong> Guard testimony references property token E-104 recovered from drainage canal, but E-104 is uncataloged in property registry.
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" onclick="openFirForCase('CASE-002')" style="flex: 1; font-size: 11px;">📑 Official FIR</button>
+              <button class="btn btn-primary btn-sm" onclick="selectCase('CASE-002')" style="flex: 2; font-size: 12px;">⚡ Audit Dossier &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Scenario 3 -->
+          <div class="card" style="margin-bottom: 0; background: linear-gradient(180deg, #131c31 0%, #0c1220 100%); border: 1px solid rgba(16, 185, 129, 0.35); border-top: 3px solid var(--accent-emerald); border-radius: 12px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 800; color: #a7f3d0; letter-spacing: 0.8px;">DOSSIER SCENARIO 03</span>
+              <span class="flag-badge" style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4);">CORROBORATED</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px;">CASE-003 (Consistent Baseline)</div>
+            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px; min-height: 54px;">
+              <strong>Forensic Condition:</strong> Corroborated Records. Ballistic trajectory, weighbridge CCTV, witness statements, and property memos align seamlessly.
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" onclick="openFirForCase('CASE-003')" style="flex: 1; font-size: 11px;">📑 Official FIR</button>
+              <button class="btn btn-primary btn-sm" onclick="selectCase('CASE-003')" style="flex: 2; font-size: 12px;">⚡ Audit Dossier &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Scenario 4 -->
+          <div class="card" style="margin-bottom: 0; background: linear-gradient(180deg, #131c31 0%, #0c1220 100%); border: 1px solid rgba(6, 182, 212, 0.35); border-top: 3px solid var(--accent-cyan); border-radius: 12px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 800; color: #bae6fd; letter-spacing: 0.8px;">DOSSIER SCENARIO 04</span>
+              <span class="flag-badge badge-inf">CUSTODY GAP</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px;">CASE-004 (Armed Commercial Robbery)</div>
+            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px; min-height: 54px;">
+              <strong>Forensic Condition:</strong> Chain of Custody Gap. Cash parcel E-401 seized at 14:45 hrs deposited at 19:30 hrs without intermediate sealing transit logs.
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" onclick="openFirForCase('CASE-004')" style="flex: 1; font-size: 11px;">📑 Official FIR</button>
+              <button class="btn btn-primary btn-sm" onclick="selectCase('CASE-004')" style="flex: 2; font-size: 12px;">⚡ Audit Dossier &rarr;</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 Architectural Differentiation: Dedicated Audit Layer</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; font-size: 13px;">
+          <div style="background: rgba(239, 68, 68, 0.05); padding: 16px; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.2);">
+            <h4 style="color: #f87171; margin-bottom: 8px;">❌ What This System Is NOT</h4>
+            <ul style="padding-left: 18px; color: #cbd5e1; line-height: 1.8;">
+              <li>NOT a crime-solving or predictive policing system</li>
+              <li>NOT a guilt/innocence determination engine</li>
+              <li>NOT a replacement for authorized human investigators</li>
+              <li>Does NOT invent or fabricate relationships without record backing</li>
+            </ul>
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.05); padding: 16px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);">
+            <h4 style="color: #34d399; margin-bottom: 8px;">✅ What This System DOES</h4>
+            <ul style="padding-left: 18px; color: #cbd5e1; line-height: 1.8;">
+              <li>Cross-references multi-source investigation documents</li>
+              <li>Detects timestamp conflicts and unexplained timeline intervals</li>
+              <li>Identifies uncataloged evidence tokens and missing witness statements</li>
+              <li>Performs case-isolated RAG retrieval to present exact supporting excerpts</li>
+              <li>Provides structured human review workflow and formal audit reporting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= TAB 2: CASE REGISTRY ================= -->
+    <div id="tab-cases" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📁 Investigation Case Registry</div>
+            <div class="card-subtitle">Search, filter, or open synthetic cases stored in local SQLite database:</div>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" id="caseSearchInput" class="form-input" placeholder="🔍 Search Case ID, Crime, Victim, Location..." style="width: 320px;">
+            <button class="btn btn-primary" id="openCreateCaseBtn">+ Create New Case</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 110px;">Case ID</th>
+                <th>Investigation Title</th>
+                <th style="width: 140px;">Crime Type</th>
+                <th style="width: 150px;">Incident Date/Time</th>
+                <th>Location</th>
+                <th>Victim</th>
+                <th style="width: 180px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="casesTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 3: CASE WORKSPACE (INTERACTIVE EDITOR) ================= -->
+    <div id="tab-workspace" class="tab-content">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main);">Case Workspace: Record Editor</h2>
+          <div style="font-size: 12px; color: var(--text-muted);">
+            Modify any record below. The audit engine dynamically re-processes every change!
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="openFirModal()" style="display: flex; align-items: center; gap: 6px;">
+            <span>📑</span> View Official FIR Form
+          </button>
+          <button type="button" class="btn btn-secondary" id="saveCaseBtn">💾 Save Record Changes</button>
+          <button type="button" class="btn btn-primary" id="runAuditBtn" style="padding: 10px 22px; font-size: 14px;">
+            ⚡ RUN AI INVESTIGATION AUDIT
+          </button>
+        </div>
+      </div>
+
+      <!-- Core Incident Meta -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📋 Case Overview & Classification</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Case ID (Unique)</label>
+            <input type="text" id="caseIdInput" class="form-input" readonly style="background: #111a2e; color: #38bdf8; font-weight: 700;">
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Investigation Title</label>
+            <input type="text" id="caseTitleInput" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Crime Classification</label>
+            <select id="crimeTypeSelect" class="form-select">
+              <option value="Murder">Murder</option>
+              <option value="Robbery">Robbery</option>
+              <option value="Kidnapping / Abduction">Kidnapping / Abduction</option>
+              <option value="Theft">Theft</option>
+              <option value="Assault">Assault</option>
+              <option value="Cybercrime">Cybercrime</option>
+              <option value="Fraud">Fraud</option>
+              <option value="Other">Other (Custom)</option>
+            </select>
+            <input type="text" id="crimeTypeCustom" class="form-input" placeholder="Type custom crime category..." style="display: none; margin-top: 6px;">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Incident Date</label>
+            <input type="date" id="incidentDateInput" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Incident Time</label>
+            <input type="text" id="incidentTimeInput" class="form-input" placeholder="e.g. 21:00">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Location / Scene of Occurrence</label>
+            <input type="text" id="locationInput" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Victim / Complainant</label>
+            <input type="text" id="victimInput" class="form-input">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Persons Mentioned / Suspects (Comma Separated)</label>
+            <input type="text" id="suspectsInput" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Case Summary</label>
+            <input type="text" id="summaryInput" class="form-input">
+          </div>
+        </div>
+      </div>
+
+      <!-- FIR Details -->
+      <div class="card" style="border: 1px solid var(--border-gold); border-left: 4px solid var(--accent-gold);">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span style="color: var(--accent-gold);">🏛️</span> First Information Report (FIR / GD Entry)
+            </div>
+            <div class="card-subtitle">Official State Police Record registered under Section 154 Cr.P.C. / Section 173 BNSS</div>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" onclick="openFirModal()" style="display: flex; align-items: center; gap: 6px;">
+            <span>📄</span> Open Official FIR Document (Form No. II)
+          </button>
+        </div>
+
+        <!-- Interactive FIR Summary Card -->
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onclick="openFirModal()">
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <div style="width: 44px; height: 44px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 22px;">🏛️</div>
+            <div>
+              <div style="font-size: 14px; font-weight: 800; color: #fde68a; display: flex; gap: 10px; align-items: center;">
+                <span id="firCardBadge" style="font-family: var(--font-mono); font-size: 13px;">FIR-2024-8841</span>
+                <span style="font-size: 10px; background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); padding: 2px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 0.5px;">FORM NO. II • STATUTORY RECORD</span>
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 3px;" id="firCardSubtitle">
+                Central District Police Station | Sec. 302 IPC / Sec. 103 BNS
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; color: #f59e0b; font-size: 12px; font-weight: 800; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); padding: 6px 14px; border-radius: 6px;">
+            <span>Click to Open Official FIR Document</span> &rarr;
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">FIR Number</label>
+            <input type="text" id="firNumberInput" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Police Station Jurisdiction</label>
+            <input type="text" id="firPsInput" class="form-input">
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Penal Sections (IPC / BNS)</label>
+            <input type="text" id="firSectionsInput" class="form-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Initial Incident Narrative in FIR</label>
+          <textarea id="firDetailsInput" class="form-textarea" rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- Witness Statements -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🗣️ Witness Statements (Section 161 CrPC / Section 180 BNSS)</div>
+            <div class="card-subtitle">Witness observations, claimed timestamps, and statements:</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="addWitnessRow()">+ Add Witness</button>
+        </div>
+        <div id="witnessesList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- CCTV Records -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📹 CCTV Surveillance Logs & Digital Feed Metadata</div>
+            <div class="card-subtitle">Camera channel, timestamp, and visual recording observations:</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="addCctvRow()">+ Add CCTV Record</button>
+        </div>
+        <div id="cctvList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Physical Evidence Register -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🔬 Physical & Forensic Evidence Register (Malkhana Seizures)</div>
+            <div class="card-subtitle">Documented recovered items, weapons, fingerprints, or digital storage:</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="addEvidenceRow()">+ Add Evidence Item</button>
+        </div>
+        <div id="evidenceList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Timeline Events -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">⏱️ Chronological Investigation Timeline Register</div>
+            <div class="card-subtitle">Sequence of events across all investigative records:</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="addTimelineRow()">+ Add Timeline Event</button>
+        </div>
+        <div id="timelineList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Chain of Custody -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📦 Chain of Custody Register</div>
+            <div class="card-subtitle">Seizure, sealing, transfer courier, and forensic storage custody logs:</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="addCustodyRow()">+ Add Custody Record</button>
+        </div>
+        <div id="custodyList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Investigation Diary Notes -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📖 Investigation Case Diary Notes (One note per line)</div>
+        </div>
+        <div class="form-group">
+          <textarea id="notesInput" class="form-textarea" rows="4"></textarea>
+        </div>
+      </div>
+
+      <!-- File Ingestion Section -->
+      <div class="card" id="fileIngestCard">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📥 Upload & Ingest Case Record Document</div>
+            <div class="card-subtitle">Upload evidentiary documents (TXT, JSON, CSV) or test with official pre-configured sample files below:</div>
+          </div>
+          <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-weight: 700;">
+            4 Sample Documents Ready
+          </span>
+        </div>
+
+        <!-- Pre-configured Sample Documents Grid -->
+        <div style="margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <div style="font-size: 13px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+              <span>📁</span> Ready-to-Use Sample Documents (Click to Ingest or Download)
+            </div>
+            <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">
+              Stored in <code>sample_documents/</code>
+            </div>
+          </div>
+          <div class="card-subtitle" style="margin-bottom: 12px;">
+            Choose any sample document below to either <b>Download</b> for local testing or <b>1-Click Ingest</b> directly into the active case:
+          </div>
+          
+          <div class="sample-docs-grid" id="sampleDocsGrid">
+            <!-- Sample cards rendered dynamically via app.js -->
+          </div>
+        </div>
+
+        <div style="border-top: 1px dashed var(--border-subtle); margin: 20px 0 16px 0;"></div>
+
+        <!-- Manual File Upload Area -->
+        <div style="margin-bottom: 8px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+            <span>📤</span> Upload Your Own Document File
+          </div>
+          
+          <label for="caseFileInput" class="upload-dropzone" id="uploadDropzone" style="cursor: pointer; display: block;">
+            <input type="file" id="caseFileInput" accept=".txt,.json,.csv" style="position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none;">
+            <div class="upload-dropzone-icon">📄</div>
+            <div class="upload-dropzone-title">Click to Browse or Drag & Drop Document</div>
+            <div class="upload-dropzone-sub">Supported formats: <b>.TXT</b> (Forensic/Witness reports), <b>.JSON</b> (CCTV/ANPR dossiers), <b>.CSV</b> (CDR tower logs)</div>
+            <div style="margin-top: 10px;">
+              <button type="button" class="btn btn-primary btn-sm" id="browseFilesBtn" style="pointer-events: auto;">
+                📂 Choose Document File (.txt, .json, .csv)
+              </button>
+            </div>
+            <div id="uploadSelectedFileName" style="margin-top: 8px; font-size: 12px; color: var(--accent-blue-bright); font-weight: 700; display: none;"></div>
+          </label>
+
+          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px; background: rgba(56, 189, 248, 0.05); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <span style="font-size: 12px; font-weight: 700; color: var(--text-body);">Direct File Picker:</span>
+            <input type="file" id="caseFileInputDirect" accept=".txt,.json,.csv" class="form-input" style="padding: 6px 10px; font-size: 12px; max-width: 340px; cursor: pointer;">
+          </div>
+        </div>
+
+        <!-- Upload Status Feedback -->
+        <div id="uploadStatusBox" style="display: none; margin-top: 12px; padding: 12px 16px; border-radius: var(--radius-sm); font-size: 12px;"></div>
+      </div>
+
+    </div>
+
+    <!-- ================= TAB 4: AUDIT DASHBOARD & FINDINGS ================= -->
+    <div id="tab-audit" class="tab-content">
+      
+      <!-- Record Quality Metrics -->
+      <div style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main);">Investigation Record Consistency Score</h2>
+          <div style="font-size: 12px; color: var(--text-muted);">
+            Prototype audit quality metrics — Non-legal second-level audit metrics evaluating internal record alignment.
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="runAudit(false)">🔄 Re-Run AI Audit</button>
+      </div>
+
+      <div class="scores-container">
+        <div class="score-box" id="scoreOverallBox">
+          <div class="score-value" id="scoreOverallVal">--%</div>
+          <div class="score-title">Overall Audit Score</div>
+        </div>
+        <div class="score-box" id="scoreConsistencyBox">
+          <div class="score-value" id="scoreConsistencyVal">--%</div>
+          <div class="score-title">Timeline & Statement Consistency</div>
+        </div>
+        <div class="score-box" id="scoreCompletenessBox">
+          <div class="score-value" id="scoreCompletenessVal">--%</div>
+          <div class="score-title">Record Completeness</div>
+        </div>
+        <div class="score-box" id="scoreLinkingBox">
+          <div class="score-value" id="scoreLinkingVal">--%</div>
+          <div class="score-title">Evidence Cross-Linking</div>
+        </div>
+        <div class="score-box" id="scoreCustodyBox">
+          <div class="score-value" id="scoreCustodyVal">--%</div>
+          <div class="score-title">Chain of Custody Tracking</div>
+        </div>
+      </div>
+
+      <!-- Flags List Header -->
+      <div class="card-header">
+        <div>
+          <div class="card-title">🚩 Detected Audit Discrepancies & Second-Level Review Items</div>
+          <div class="card-subtitle">Cross-referenced against FIR, witness statements, CCTV logs, and evidence registries:</div>
+        </div>
+      </div>
+
+      <!-- Audit Flags Container -->
+      <div id="auditFlagsList">
+        <!-- Dynamically rendered flags -->
+      </div>
+
+    </div>
+
+    <!-- ================= TAB 5: TIMELINE VISUALIZER ================= -->
+    <div id="tab-timeline" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">⏱️ Interactive Chronological Timeline Visualizer</div>
+            <div class="card-subtitle">Chronological progression of documented events with conflict window highlights:</div>
+          </div>
+        </div>
+        <div id="timelineContainer">
+          <!-- Populated by TimelineVisualizer -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 6: EVIDENCE RELATIONSHIP GRAPH ================= -->
+    <div id="tab-graph" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🕸️ Evidence Matrix & Person Relationship Network</div>
+            <div class="card-subtitle">Tactical force-directed relationship graph. Drag nodes to reposition, scroll wheel to zoom, hover for inspection HUD, and click CCTV / Case nodes to inspect:</div>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+            <span><span style="color: #f59e0b;">●</span> 🏛️ Case</span>
+            <span><span style="color: #a855f7;">●</span> 🛡️ Victim</span>
+            <span><span style="color: #f97316;">●</span> 👤 Suspect</span>
+            <span><span style="color: #06b6d4;">●</span> 👁️ Witness</span>
+            <span><span style="color: #38bdf8;">●</span> 📹 CCTV</span>
+            <span><span style="color: #10b981;">●</span> 🔬 Evidence</span>
+            <span><span style="color: #f43f5e;">●</span> ⚠️ Critical Gap</span>
+          </div>
+        </div>
+
+        <!-- Graph Controls & Category Filter Toolbar -->
+        <div class="graph-toolbar">
+          <div class="graph-filters">
+            <span style="font-size: 11px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; margin-right: 4px; display: flex; align-items: center;">Filter:</span>
+            <button type="button" class="graph-filter-btn active" onclick="setGraphFilter('all', this)">🌐 All Entities</button>
+            <button type="button" class="graph-filter-btn" onclick="setGraphFilter('suspects', this)">👥 Suspects & Witnesses</button>
+            <button type="button" class="graph-filter-btn" onclick="setGraphFilter('cctv', this)">📹 CCTV Surveillance</button>
+            <button type="button" class="graph-filter-btn" onclick="setGraphFilter('evidence', this)">🔬 Physical Evidence</button>
+            <button type="button" class="graph-filter-btn" onclick="setGraphFilter('conflicts', this)">⚠️ Flagged Inconsistencies</button>
+          </div>
+          <div class="graph-controls">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="graphZoomIn()" title="Zoom In">➕ Zoom In</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="graphZoomOut()" title="Zoom Out">➖ Zoom Out</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="graphResetView()" title="Reset View">⟲ Reset</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="graphPhysicsBtn" onclick="toggleGraphPhysics(this)" title="Pause / Resume Physics Simulation">⏸ Pause Force</button>
+          </div>
+        </div>
+
+        <canvas id="graphCanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- ================= TAB 7: REPORT EXPORT ================= -->
+    <div id="tab-report" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📄 Formal Investigation Audit Report</div>
+            <div class="card-subtitle">Audited record breakdown with human review notes and statutory audit disclaimers:</div>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="downloadCaseReportMarkdown()">⬇️ Export Markdown</button>
+          </div>
+        </div>
+        <div id="reportPreviewContainer">
+          <!-- Live iframe preview -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Create Case Modal -->
+  <div class="modal-overlay" id="createCaseModal">
+    <div class="modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: var(--text-main);">Create New Investigation Case</h3>
+        <button class="btn btn-secondary btn-sm" id="closeCreateCaseBtn">✕</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Case Identifier (e.g. CASE-011)</label>
+        <input type="text" id="newCaseId" class="form-input" placeholder="CASE-011">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Investigation Title</label>
+        <input type="text" id="newCaseTitle" class="form-input" placeholder="e.g. Downtown Bank Vault Infiltration">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Crime Classification</label>
+        <select id="newCaseCrimeType" class="form-select">
+          <option value="Murder">Murder</option>
+          <option value="Robbery">Robbery</option>
+          <option value="Kidnapping / Abduction">Kidnapping / Abduction</option>
+          <option value="Theft">Theft</option>
+          <option value="Assault">Assault</option>
+          <option value="Cybercrime">Cybercrime</option>
+          <option value="Fraud">Fraud</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <button class="btn btn-primary" id="submitCreateCaseBtn">Create & Open Workspace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= OFFICIAL POLICE FIR (FORM NO. II) MODAL ================= -->
+  <div class="modal-overlay" id="firModal">
+    <div class="fir-modal-box">
+      <div class="fir-modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 22px;">⚖️</span>
+          <div>
+            <h3 style="font-size: 15px; font-weight: 800; color: #f8fafc; margin: 0;">FIRST INFORMATION REPORT (FORM NO. II)</h3>
+            <div style="font-size: 11px; color: #94a3b8;">Statutory Police Record Under Section 154 Cr.P.C. / Section 173 BNSS</div>
+          </div>
+        </div>
+        <div class="fir-actions-bar">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="printFirDocument()" style="display: flex; align-items: center; gap: 4px;">
+            <span>🖨️</span> Print / Save PDF
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeFirModal()">✕ Close</button>
+        </div>
+      </div>
+
+      <!-- Printable FIR Paper Document -->
+      <div class="fir-paper" id="firDocumentContent">
+        <div class="fir-watermark">AUTHENTIC POLICE RECORD</div>
+        
+        <!-- Official Header -->
+        <div class="fir-doc-header">
+          <div class="fir-emblem">🇮🇳</div>
+          <div class="fir-state-title">STATE POLICE DEPARTMENT • CRIMINAL INVESTIGATION RECORD</div>
+          <div class="fir-main-title">FIRST INFORMATION REPORT (प्रथम सूचना रिपोर्ट)</div>
+          <div class="fir-sub-law">(Under Section 154 Cr.P.C. / Section 173 Bharatiya Nagarik Suraksha Sanhita)</div>
+          <div style="font-size: 11px; font-weight: bold; margin-top: 4px; color: #4b5563;">
+            FORM NO. II [CRIMINAL COURTS JURISDICTION REGISTER]
+          </div>
+        </div>
+
+        <!-- Meta Table 1 -->
+        <table class="fir-grid-table">
+          <tr>
+            <th>1. District:</th>
+            <td id="firDocDistrict">CENTRAL METROPOLITAN DISTRICT</td>
+            <th>Police Station:</th>
+            <td id="firDocPs">Central District Police Station</td>
+          </tr>
+          <tr>
+            <th>Year / FIR No:</th>
+            <td style="font-weight: 800; color: #1e3a8a;"><span id="firDocYear">2024</span> / <span id="firDocNumber">FIR-2024-8841</span></td>
+            <th>Date & Time of FIR:</th>
+            <td id="firDocDateTime">12-Oct-2024 21:00 hrs</td>
+          </tr>
+        </table>
+
+        <!-- Acts & Sections -->
+        <table class="fir-grid-table">
+          <tr>
+            <th style="width: 25%;">2. Act(s) & Section(s):</th>
+            <td colspan="3" style="font-weight: 700; color: #991b1b;" id="firDocSections">
+              Section 302 IPC (Murder) / Section 103 Bharatiya Nyaya Sanhita (BNS)
+            </td>
+          </tr>
+        </table>
+
+        <!-- Occurrence of Offence -->
+        <table class="fir-grid-table">
+          <tr>
+            <th rowspan="2">3. (a) Occurrence of Offence:</th>
+            <td colspan="3">
+              <strong>Day:</strong> <span id="firDocDay">Saturday</span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+              <strong>Date:</strong> <span id="firDocDate">2024-10-12</span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+              <strong>Time:</strong> <span id="firDocTime">21:00 hrs</span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <strong>(b) Information Received at P.S. Date:</strong> <span id="firDocReportedDate">2024-10-12</span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+              <strong>General Diary (GD) Reference:</strong> Entry No. 42/GD, Time: 21:15 hrs
+            </td>
+          </tr>
+          <tr>
+            <th>4. Type of Information:</th>
+            <td colspan="3">Written / Telephonic PCR Dispatch Call</td>
+          </tr>
+        </table>
+
+        <!-- Place of Occurrence -->
+        <table class="fir-grid-table">
+          <tr>
+            <th>5. Place of Occurrence:</th>
+            <td colspan="3">
+              <div><strong>(a) Direction & Distance from P.S.:</strong> Approx 3.5 KM North-East (Sector Beat #04)</div>
+              <div style="margin-top: 4px;"><strong>(b) Full Address:</strong> <span id="firDocLocation">Flat 402, Metro Heights Apartment, Sector 14</span></div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Complainant / Informant Details -->
+        <table class="fir-grid-table">
+          <tr>
+            <th rowspan="3">6. Complainant / Informant:</th>
+            <td colspan="3"><strong>(a) Name:</strong> <span id="firDocComplainant">Officer S. Rawat (SI)</span></td>
+          </tr>
+          <tr>
+            <td><strong>(b) Nationality:</strong> Indian</td>
+            <td colspan="2"><strong>(c) Occupation / Rank:</strong> Sub-Inspector / Authorized Officer</td>
+          </tr>
+          <tr>
+            <td colspan="3"><strong>(d) Address:</strong> Investigating Authority / Police Station Premises</td>
+          </tr>
+        </table>
+
+        <!-- Suspects / Accused Details -->
+        <table class="fir-grid-table">
+          <tr>
+            <th>7. Details of Known / Suspected Accused:</th>
+            <td colspan="3" id="firDocSuspects" style="font-weight: 600; color: #1f2937;">
+              Vikram Rao (Former Business Associate), Ramesh Verma (Building Caretaker)
+            </td>
+          </tr>
+          <tr>
+            <th>8. Reasons for Delay in Reporting:</th>
+            <td colspan="3">Immediate police dispatch upon incident notice; No unexplained delay.</td>
+          </tr>
+          <tr>
+            <th>9. Properties Stolen / Involved / Seized:</th>
+            <td colspan="3" id="firDocEvidence">
+              Physical and digital artifacts secured per seizure memos (E-001, E-002).
+            </td>
+          </tr>
+        </table>
+
+        <!-- Narrative Section -->
+        <div style="margin: 14px 0 6px 0; font-weight: bold; font-size: 13px;">
+          10. First Information Narrative / Statement of Complaint (प्राथमिक सूचना विवरण):
+        </div>
+        <div class="fir-narrative-box" id="firDocNarrative">
+          Incident occurred around 21:00 hrs on 12-Oct-2024. Victim suffered fatal stab injury. Neighbor raised distress call. Security logs and area surveillance impounded.
+        </div>
+
+        <!-- Action Taken Table -->
+        <table class="fir-grid-table">
+          <tr>
+            <th>11. Action Taken:</th>
+            <td colspan="3">
+              Case registered under indicated penal sections. Investigation assigned to Station Investigating Officer. Malkhana memo and crime scene documentation initiated.
+            </td>
+          </tr>
+          <tr>
+            <th>12. Investigating Officer:</th>
+            <td>Inspector In-Charge (Crime Division)</td>
+            <th>Copy Sent to Court on:</th>
+            <td id="firDocCourtDate">Next Judicial Working Hours</td>
+          </tr>
+        </table>
+
+        <!-- Signatures & Stamp -->
+        <div class="fir-signatures-row">
+          <div class="fir-sign-block">
+            <div style="height: 40px; font-family: cursive; font-size: 16px; color: #1e3a8a;" id="firDocComplainantSign">S. Rawat</div>
+            <div class="fir-sign-line">Signature / Thumb Impression of Informant</div>
+            <div style="font-size: 10px; color: #4b5563;">Date: <span id="firDocSignDate1">2024-10-12</span></div>
+          </div>
+
+          <!-- Official Circular Blue Stamp -->
+          <div class="fir-official-stamp">
+            <div style="font-size: 8px;">★ OFFICIAL SEAL ★</div>
+            <div style="font-size: 10px; font-weight: 900; margin: 2px 0;">POLICE DEPT</div>
+            <div id="firDocStampPs" style="font-size: 8px;">CENTRAL PS</div>
+            <div style="font-size: 7px; margin-top: 2px;">SEC 154 CrPC REGISTRY</div>
+          </div>
+
+          <div class="fir-sign-block">
+            <div style="height: 40px; font-family: cursive; font-size: 16px; color: #1e3a8a;">R. K. Sharma (SHO)</div>
+            <div class="fir-sign-line">Signature of Officer-in-Charge, Police Station</div>
+            <div style="font-size: 10px; color: #4b5563;">Rank: Station House Officer (SHO)</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CCTV SURVEILLANCE MONITOR PLAYER MODAL ================= -->
+  <div class="modal-overlay" id="cctvModal">
+    <div class="cctv-modal-box">
+      
+      <!-- Monitor Header -->
+      <div style="background: #0b1120; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="cctv-rec-dot"></span>
+          <div>
+            <div style="font-size: 13px; font-weight: 800; color: #38bdf8; font-family: var(--font-mono);" id="cctvModalTitle">
+              CAM-04 (NORTH STAIRWELL 4TH FLOOR)
+            </div>
+            <div style="font-size: 11px; color: #94a3b8;" id="cctvModalSubtitle">
+              NVR Channel #04 | 1080p FHD 30FPS | H.264 High Profile
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="closeCctvModal()">✕ Close Feed</button>
+      </div>
+
+      <!-- Dynamic Camera Channel Selector Strip -->
+      <div id="cctvChannelsBar" style="background: #080d1a; padding: 8px 18px; border-bottom: 1px solid #1e293b; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <!-- Filled dynamically with current case camera buttons -->
+      </div>
+
+      <!-- Monitor Video Display Screen -->
+      <div class="cctv-monitor-screen" id="cctvScreenContainer">
+        <div class="cctv-scanlines" id="cctvScanlinesOverlay"></div>
+        <div class="cctv-monitor-hud-overlay">
+          <span id="cctvHudLeft">[CAM-04] [REC]</span>
+          <span id="cctvHudRight">2024-10-12 20:40:15</span>
+        </div>
+        <img id="cctvModalImg" src="/static/cctv/cctv_CASE-001_CCTV-001.jpg" alt="CCTV Surveillance Still" onerror="if(!this.dataset.errored){this.dataset.errored='1';this.src='/static/cctv/cctv_CASE-001_CCTV-001.jpg';}" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+
+      <!-- Controls & Filter Toolbar -->
+      <div class="cctv-control-bar">
+        <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Visual Filter:</span>
+          <button type="button" class="cctv-filter-btn active" onclick="setCctvFilter('normal', this)">Original</button>
+          <button type="button" class="cctv-filter-btn" onclick="setCctvFilter('night', this)">🌙 Night Vision (IR)</button>
+          <button type="button" class="cctv-filter-btn" onclick="setCctvFilter('bw', this)">🔳 B&W High-Contrast</button>
+          <button type="button" class="cctv-filter-btn" onclick="setCctvFilter('thermal', this)">🔥 Thermal/Invert</button>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button type="button" class="btn btn-secondary btn-sm" id="cctvScanlinesToggle" onclick="toggleCctvScanlines(this)">📺 Scanlines: ON</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="downloadCctvSnapshot()">💾 Save Snapshot</button>
+        </div>
+      </div>
+
+      <!-- Observation Details Drawer -->
+      <div style="background: #0b1120; padding: 16px 20px; border-top: 1px solid #1e293b;">
+        <div style="font-size: 12px; font-weight: 700; color: #38bdf8; text-transform: uppercase; margin-bottom: 4px;">
+          Surveillance Observation Log & Chain of Verification:
+        </div>
+        <div style="font-size: 13px; color: #cbd5e1; line-height: 1.6;" id="cctvModalDesc">
+          Loading surveillance log details...
+        </div>
+        <div style="display: flex; gap: 20px; margin-top: 10px; font-size: 11px; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
+          <span><strong>Timestamp:</strong> <span id="cctvModalTime">20:40</span></span>
+          <span><strong>Recording Date:</strong> <span id="cctvModalDate">2024-10-12</span></span>
+          <span><strong>Storage Integrity:</strong> SHA-256 Verified ✓</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= DOCUMENT VIEWER MODAL ================= -->
+  <div class="modal-overlay" id="docViewerModal">
+    <div class="modal-box" style="max-width: 800px; max-height: 88vh; display: flex; flex-direction: column;">
+      
+      <!-- Modal Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 22px;">📄</span>
+          <div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--text-main);" id="docViewerTitle">
+              Document Viewer
+            </div>
+            <div style="font-size: 11.5px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px;" id="docViewerMeta">
+              Filename: sample.txt | Format: TXT
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeDocViewerModal()">✕ Close</button>
+      </div>
+
+      <!-- Modal Body (Scrollable Preformatted Text) -->
+      <div style="flex: 1; overflow-y: auto; background: #070b14; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 16px; min-height: 320px; max-height: 520px;">
+        <pre id="docViewerContent" style="color: #cbd5e1; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.65; white-space: pre-wrap; word-break: break-word; margin: 0;">Loading document content...</pre>
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 14px; flex-wrap: wrap; gap: 10px;">
+        <div style="font-size: 11.5px; color: var(--text-dim);" id="docViewerHint">
+          Click <b>Ingest into Case</b> to append this evidence record to the active dossier.
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <a id="docViewerDownloadBtn" class="btn btn-secondary btn-sm" href="#" download>
+            ⬇️ Download File
+          </a>
+          <button type="button" class="btn btn-primary btn-sm" id="docViewerIngestBtn" onclick="ingestCurrentModalDoc()">
+            ⚡ Ingest into Case
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div>
+      <strong>AI Investigation Auditor v2.4.0</strong> — Academic & Hackathon Prototype
+    </div>
+    <div>
+      All data is 100% synthetic/fictional. Does not decide guilt or replace authorized investigators.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/graph.js?v=2.5.0"></script>
+  <script src="js/timeline.js?v=2.5.0"></script>
+  <script src="js/app.js?v=2.6.0"></script>
+</body>
+</html>

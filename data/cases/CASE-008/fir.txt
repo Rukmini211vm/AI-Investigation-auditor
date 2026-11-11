@@ -1,0 +1,14 @@
+CASE ID: CASE-008
+TITLE: Nightclub Alleyway Aggravated Assault
+CRIME TYPE: Assault
+INCIDENT DATE: 2024-11-20
+INCIDENT TIME: 01:10
+LOCATION: Rear Alley, Club Mirage, Outer Circle
+VICTIM: Sameer Joshi (Age 26)
+SUSPECTS: Rahul Taneja (Patron)
+FIR NUMBER: FIR-2024-12401
+POLICE STATION: Connaught Place PS
+SECTIONS: Section 324, 326 IPC / Section 118 BNS
+
+DETAILS:
+Attacked in alleyway following verbal argument inside club. Suffered blunt head trauma.

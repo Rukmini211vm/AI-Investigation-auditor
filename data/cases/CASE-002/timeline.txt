@@ -1,0 +1,5 @@
+TIMELINE REGISTER FOR CASE-002
+
+[22:30 on 2024-11-04] EVT-101 (FIR-2024-9102): Break-in reported at Master Bedroom.
+[22:42 on 2024-11-04] EVT-102 (CCTV-101): Perimeter CCTV captures suspects jumping wall.
+[23:10 on 2024-11-04] EVT-103 (Police Dispatch Log): Police team arrives at farmhouse.

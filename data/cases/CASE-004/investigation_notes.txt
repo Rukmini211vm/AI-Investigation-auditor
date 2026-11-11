@@ -1,0 +1,3 @@
+INVESTIGATION DIARY NOTES FOR CASE-004
+
+- Chain of custody documentation gap detected: Evidence E-401 was seized at 14:45 hrs but stored at 19:30 hrs with no documented sealing, transit escort, or intermediate custody handover log.

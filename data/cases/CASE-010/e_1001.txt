@@ -1,0 +1,8 @@
+EVIDENCE ID: E-1001
+TYPE: Hydraulic Cutter
+RECOVERY LOCATION: Drain tunnel junction
+RECOVERY TIME: 06:00
+OFFICER: IO ACP Raghavendra
+
+DESCRIPTION:
+Industrial hydraulic spreader left inside tunnel cavity.

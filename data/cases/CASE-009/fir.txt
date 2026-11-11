@@ -1,0 +1,14 @@
+CASE ID: CASE-009
+TITLE: Extortion & Threatening Call Investigation
+CRIME TYPE: Fraud
+INCIDENT DATE: 2024-12-02
+INCIDENT TIME: 16:00
+LOCATION: Sunrise Developers Head Office, MG Road
+VICTIM: Alok Singhania (Real Estate Director)
+SUSPECTS: Sim Card Holder: Mohit Garg
+FIR NUMBER: FIR-2024-13890
+POLICE STATION: Special Cell PS
+SECTIONS: Section 384, 506 IPC / Section 308, 351 BNS
+
+DETAILS:
+Received call demanding extortion money with threat of physical injury to family members.

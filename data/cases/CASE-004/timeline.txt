@@ -1,0 +1,4 @@
+TIMELINE REGISTER FOR CASE-004
+
+[14:15 on 2024-08-22] EVT-401 (FIR-2024-6511): Armed robbery occurs.
+[14:45 on 2024-08-22] EVT-402 (Seizure Memo): Cash bundle E-401 recovered at fire exit.

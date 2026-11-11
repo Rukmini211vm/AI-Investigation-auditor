@@ -1,0 +1,16 @@
+CHAIN OF CUSTODY REGISTER FOR CASE-001
+
+EVIDENCE ID: E-001
+COLLECTED BY: IO Inspector Sharma at 22:15
+SEALED TIME: 22:30
+TRANSFERRED TO: Head Constable M. Lal (Malkhana Custodian) at 23:45
+STORED AT: Police Station Evidence Locker #4
+STATUS: Sealed & Logged
+
+EVIDENCE ID: E-002
+COLLECTED BY: Cyber Cell SI Verma at 23:00
+SEALED TIME: 23:20
+TRANSFERRED TO: Digital Forensic Lab, Rohini at 09:00
+STORED AT: DFL Secure Locker A-12
+STATUS: Transferred
+

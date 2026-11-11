@@ -1,0 +1,7 @@
+CCTV ID: CCTV-002
+CAMERA: Ground Floor Lobby Camera (CAM-01)
+TIMESTAMP: 20:28
+DATE: 2024-10-12
+
+FOOTAGE DESCRIPTION:
+Footage captures guest arrival at lobby entry at 20:28 hrs.

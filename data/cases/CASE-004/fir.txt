@@ -1,0 +1,14 @@
+CASE ID: CASE-004
+TITLE: Jewelry Showroom Armed Robbery
+CRIME TYPE: Robbery
+INCIDENT DATE: 2024-08-22
+INCIDENT TIME: 14:15
+LOCATION: Kalyan Jewellers Commercial Branch, MG Road
+VICTIM: Staff & Store Manager R. Sethi
+SUSPECTS: Unknown masked trio
+FIR NUMBER: FIR-2024-6511
+POLICE STATION: Central Commercial PS
+SECTIONS: Section 392, 397 IPC / Section 309 BNS
+
+DETAILS:
+Three masked men armed with country-made pistols entered showroom at 14:15 hrs, overpowered guards, and looted tray displays and vault cash.

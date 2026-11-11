@@ -1,0 +1,7 @@
+CCTV ID: CCTV-1001
+CAMERA: Vault Corridor Low-Light Camera
+TIMESTAMP: 02:18
+DATE: 2024-06-14
+
+FOOTAGE DESCRIPTION:
+Dust plume and entry of two obscured figures from tunnel opening.

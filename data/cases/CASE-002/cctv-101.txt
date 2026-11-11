@@ -1,0 +1,7 @@
+CCTV ID: CCTV-101
+CAMERA: Perimeter Wall South Camera
+TIMESTAMP: 22:42
+DATE: 2024-11-04
+
+FOOTAGE DESCRIPTION:
+Two individuals scaling the south perimeter wall into the dark thicket.

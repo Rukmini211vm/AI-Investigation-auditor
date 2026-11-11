@@ -1,0 +1,6 @@
+TIMELINE REGISTER FOR CASE-008
+
+[01:10 on 2024-11-20] EVT-801 (FIR-2024-12401): Assault in alleyway reported.
+[01:12 on 2024-11-20] EVT-802 (CCTV-801): CCTV captures scuffle.
+[02:00 on 2024-11-20] EVT-803 (Seizure Memo): Fabric E-801 recovered at scene.
+[08:30 on 2024-11-20] EVT-804 (Seizure Memo): Iron rod E-802 recovered 400m away.

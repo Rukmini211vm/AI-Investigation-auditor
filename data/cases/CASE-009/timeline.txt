@@ -1,0 +1,4 @@
+TIMELINE REGISTER FOR CASE-009
+
+[16:00 on 2024-12-02] EVT-901 (FIR-2024-13890): Extortion call received.
+[16:45 on 2024-12-02] EVT-902 (Seizure Memo): Audio recording E-901 seized and hashed.

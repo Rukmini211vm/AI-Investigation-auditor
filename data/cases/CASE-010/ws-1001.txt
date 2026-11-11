@@ -1,0 +1,8 @@
+WITNESS ID: WS-1001
+NAME: G. Manjunath (Central Monitoring Agent)
+STATEMENT DATE: 2024-06-14
+CLAIMED TIME: 02:15
+LOCATION: Central Alarm Command
+
+STATEMENT:
+Strongroom seismic sensor triggered automated priority alarm alert at 02:15 hrs. Alert immediately relayed to police control room.

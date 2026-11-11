@@ -1,0 +1,7 @@
+TIMELINE REGISTER FOR CASE-001
+
+[20:28 on 2024-10-12] EVT-001 (CCTV-002): Lobby CCTV records entry of visitor into building.
+[20:40 on 2024-10-12] EVT-002 (CCTV-001): Stairwell CCTV records hooded male exiting stairwell.
+[21:00 on 2024-10-12] EVT-003 (FIR-2024-8841): FIR logged time of fatal incident occurrence.
+[21:10 on 2024-10-12] EVT-004 (WS-001): Witness Neha Sharma reports seeing male leave Flat 402.
+[21:30 on 2024-10-12] EVT-005 (Police Diary): First responder PCR unit arrives at Flat 402.

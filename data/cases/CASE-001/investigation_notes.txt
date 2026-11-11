@@ -1,0 +1,4 @@
+INVESTIGATION DIARY NOTES FOR CASE-001
+
+- Autopsy report estimates time of death between 20:30 and 21:30 hrs.
+- Critical conflict noted: CCTV shows exit at 20:40 hrs, but witness WS-001 reports seeing departure at 21:10 hrs. Check camera clock calibration against atomic network time.

@@ -1,0 +1,14 @@
+CASE ID: CASE-005
+TITLE: Minor Abduction from Shopping Mall
+CRIME TYPE: Kidnapping / Abduction
+INCIDENT DATE: 2024-10-01
+INCIDENT TIME: 17:30
+LOCATION: North Gate City Mall, Ring Road
+VICTIM: Master Aarav (Age 9)
+SUSPECTS: Unidentified driver of silver sedan
+FIR NUMBER: FIR-2024-9540
+POLICE STATION: North Town PS
+SECTIONS: Section 363 IPC / Section 137 BNS
+
+DETAILS:
+Child went missing near toy store on 2nd floor of North Gate City Mall at 17:30 hrs. Search of mall premises yielded negative results.

@@ -1,0 +1,4 @@
+TIMELINE REGISTER FOR CASE-007
+
+[03:15 on 2024-07-09] EVT-701 (CCTV-701): CCTV captures two thieves actively prying shutter.
+[03:15 on 2024-07-09] EVT-702 (WS-701): Guard claims he inspected shutter at this exact time and it was intact.

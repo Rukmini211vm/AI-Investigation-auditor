@@ -1,0 +1,9 @@
+CHAIN OF CUSTODY REGISTER FOR CASE-006
+
+EVIDENCE ID: E-601
+COLLECTED BY: Cyber Inspector S. Murthy at 14:00
+SEALED TIME: 14:30
+TRANSFERRED TO: CERT-In Cyber Forensics Wing at 17:00
+STORED AT: FSL Digital Vault
+STATUS: Under Analysis
+

@@ -1,0 +1,8 @@
+EVIDENCE ID: E-001
+TYPE: Physical Weapon
+RECOVERY LOCATION: Kitchen counter, Flat 402
+RECOVERY TIME: 22:15
+OFFICER: IO Inspector Sharma
+
+DESCRIPTION:
+Stainless steel chef knife (8-inch blade) with blood staining found near kitchen counter.

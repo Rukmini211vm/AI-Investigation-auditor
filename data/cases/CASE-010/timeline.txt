@@ -1,0 +1,6 @@
+TIMELINE REGISTER FOR CASE-010
+
+[02:15 on 2024-06-14] EVT-1001 (Alarm Log): Automated seismic alarm relayed to police control.
+[02:18 on 2024-06-14] EVT-1002 (CCTV-1001): CCTV records breach in vault.
+[03:00 on 2024-06-14] EVT-1003 (PCR Dispatch Log): Control room dispatches first patrol vehicle to bank.
+[03:12 on 2024-06-14] EVT-1004 (PCR Unit 9 Log): Patrol vehicle reaches bank premises.

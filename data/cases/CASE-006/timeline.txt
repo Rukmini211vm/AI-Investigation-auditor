@@ -1,0 +1,4 @@
+TIMELINE REGISTER FOR CASE-006
+
+[11:45 on 2024-11-15] EVT-601 (FIR-2024-11029): Unauthorized SWIFT transfer dispatched.
+[14:00 on 2024-11-15] EVT-602 (Seizure Memo): Server logs E-601 seized.

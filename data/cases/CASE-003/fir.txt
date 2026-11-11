@@ -1,0 +1,14 @@
+CASE ID: CASE-003
+TITLE: Industrial Warehouse Fatal Shooting
+CRIME TYPE: Murder
+INCIDENT DATE: 2024-09-18
+INCIDENT TIME: 19:15
+LOCATION: Godown 7, Peenya Industrial Area, Phase II
+VICTIM: Dinesh Gowda (Age 45, Contractor)
+SUSPECTS: Manoj K. (Subcontractor)
+FIR NUMBER: FIR-2024-7720
+POLICE STATION: Peenya Police Station
+SECTIONS: Section 302 IPC / Section 25 Arms Act
+
+DETAILS:
+Heard loud shouts followed by two gunshots from godown office at 19:15 hrs. Suspect Manoj observed fleeing on motorcycle bearing KA-02-EZ-4412.

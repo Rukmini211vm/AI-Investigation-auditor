@@ -1,0 +1,7 @@
+CCTV ID: CCTV-301
+CAMERA: Weighbridge Automated Camera
+TIMESTAMP: 19:18
+DATE: 2024-09-18
+
+FOOTAGE DESCRIPTION:
+Color capture of motorcycle KA-02-EZ-4412 crossing weighbridge gate at 19:18 hrs.

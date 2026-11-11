@@ -1,0 +1,9 @@
+CHAIN OF CUSTODY REGISTER FOR CASE-009
+
+EVIDENCE ID: E-901
+COLLECTED BY: Inspector V. Bhatia at 16:45
+SEALED TIME: 17:15
+TRANSFERRED TO: Digital Evidence Custodian at 18:00
+STORED AT: Digital Vault D-2
+STATUS: Verified SHA-256 Hash
+

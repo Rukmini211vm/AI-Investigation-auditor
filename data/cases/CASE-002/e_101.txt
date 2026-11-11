@@ -1,0 +1,8 @@
+EVIDENCE ID: E-101
+TYPE: Physical Item
+RECOVERY LOCATION: Master Bedroom Carpet
+RECOVERY TIME: 23:40
+OFFICER: SI R. K. Dogra
+
+DESCRIPTION:
+Heavy duty aluminum flashlight with rubberized grip.
